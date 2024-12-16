@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 '''
-    Use Babel to get user locale.
+    Basic Babel setup.
 '''
 
 from flask_babel import Babel
-from flask import Flask, render_template, request
-
+from flask import Flask, render_template
 
 app = Flask(__name__, template_folder='templates')
 babel = Babel(app)
@@ -28,15 +27,7 @@ def helloWorld() -> str:
     '''
         Render template for Babel usage.
     '''
-    return render_template('3-index.html')
-
-
-@babel.localeselector
-def get_locale() -> str:
-    '''
-        Get user locale to serve matching translation.
-    '''
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    return render_template('1-index.html')
 
 
 if __name__ == '__main__':
